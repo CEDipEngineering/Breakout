@@ -16,6 +16,20 @@ public class movimentoRaquete : MonoBehaviour
     void Update()
     {
         float inputX = Input.GetAxis("Horizontal");
-        transform.position += new Vector3(inputX,0,0)*Time.deltaTime*velocidade;
+        Vector2 posicaoViewport = Camera.main.WorldToViewportPoint(transform.position);
+
+        if(posicaoViewport.x > 0.05 && posicaoViewport.x < 0.95)
+        {
+            transform.position += new Vector3(inputX,0,0)*Time.deltaTime*velocidade;
+        }
+        if(posicaoViewport.x < 0.05 && inputX>0)
+        {
+            transform.position += new Vector3(inputX,0,0)*Time.deltaTime*velocidade;
+        }
+        if(posicaoViewport.x > 0.95 && inputX<0)
+        {
+            transform.position += new Vector3(inputX,0,0)*Time.deltaTime*velocidade;
+        }
+
     }
 }
