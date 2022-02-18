@@ -28,4 +28,15 @@ public class GameManager
         pontos = 0;
         gameState = GameState.GAME;
     }
+
+    
+public delegate void ChangeStateDelegate();
+public static ChangeStateDelegate changeStateDelegate;
+
+public void ChangeState(GameState nextState)
+{
+   gameState = nextState;
+   changeStateDelegate();
+}
+
 }

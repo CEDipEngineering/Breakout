@@ -5,9 +5,11 @@ using UnityEngine;
 public class spawner : MonoBehaviour
 {
     public GameObject Brick;    
+    GameManager gm;
     // Start is called before the first frame update
     void Start()
     {
+        gm = GameManager.GetInstance();
         for(int i = 0; i < 12; i++)
         {
             for(int j = 0; j < 4; j++){
@@ -20,6 +22,9 @@ public class spawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (transform.childCount <= 0 && gm.gameState == GameManager.GameState.GAME)
+            {
+                gm.ChangeState(GameManager.GameState.ENDGAME);
+            }
     }
 }
