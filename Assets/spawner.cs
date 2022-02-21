@@ -10,11 +10,23 @@ public class spawner : MonoBehaviour
     void Start()
     {
         gm = GameManager.GetInstance();
-        for(int i = 0; i < 12; i++)
-        {
-            for(int j = 0; j < 4; j++){
-                Vector3 posicao = new Vector3(-9 + 1.55f * i, 4 - 0.55f * j);
-                Instantiate(Brick, posicao, Quaternion.identity, transform);
+        GameManager.changeStateDelegate += Construct;
+        Construct();
+    }
+
+    void Construct(){
+        if(gm.gameState == GameManager.GameState.GAME){
+            foreach (Transform child in transform)
+            {
+                GameObject.Destroy(child);
+            }
+            for(int i = 4; i < 8; i++)
+            {
+                for(int j = 1; j < 3; j++)
+                {
+                    Vector3 posicao = new Vector3(-9 + 1.55f * i, 4 - 0.55f * j);
+                    Instantiate(Brick, posicao, Quaternion.identity, transform);
+                }
             }
         }
     }

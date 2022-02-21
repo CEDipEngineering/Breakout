@@ -19,6 +19,10 @@ public class movimentoBola : MonoBehaviour
         }
     }
 
+    public void ResetPosition() 
+    {  
+        transform.position = new Vector3(0,-3.5f,0);
+    }
 
     void Start()
     {
@@ -27,11 +31,13 @@ public class movimentoBola : MonoBehaviour
 
         direcao = new Vector3(x, y).normalized;
         gm = GameManager.GetInstance();
+        GameManager.changeStateDelegate += ResetPosition;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if(gm.gameState != GameManager.GameState.GAME) return;
         transform.position += direcao*Time.deltaTime*velocidade;
         
         // Debug.Log($"Vidas: {gm.vidas} \t | \t Pontos: {gm.pontos}");

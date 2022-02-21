@@ -11,11 +11,11 @@ public class UI_FimDeJogo : MonoBehaviour
 
         if(gm.vidas > 0)
         {
-            message.text = "Você Ganhou!!!";
+            message.text = "Victory!";
         }
         else
         {
-            message.text = "Você Perdeu!!";
+            message.text = "Defeat!";
         }
     }
 
