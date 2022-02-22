@@ -17,11 +17,6 @@ public class movimentoBola : MonoBehaviour
         {
             gm.pontos++;
         }
-        if (col.gameObject.CompareTag("Player"))
-        {
-            movimentoRaquete pd = GetComponent("movimentoRaquete") as movimentoRaquete;
-            Debug.Log(pd.getAngle());
-        }
     }
 
     public void ResetPosition() 
