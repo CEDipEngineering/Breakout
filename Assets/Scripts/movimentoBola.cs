@@ -13,9 +13,14 @@ public class movimentoBola : MonoBehaviour
     void OnTriggerEnter2D(Collider2D col)
     {
         direcao = new Vector3(direcao.x, -direcao.y).normalized;
-        if (col.gameObject.CompareTag("Player"))
+        if (col.gameObject.CompareTag("Brick"))
         {
             gm.pontos++;
+        }
+        if (col.gameObject.CompareTag("Player"))
+        {
+            movimentoRaquete pd = GetComponent("movimentoRaquete") as movimentoRaquete;
+            Debug.Log(pd.getAngle());
         }
     }
 
